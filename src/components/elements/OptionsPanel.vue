@@ -4,7 +4,7 @@
       <FlexVertical slim>
         <FlexHorizontal between>
           <label for="length">Character Length</label>
-          <span class="text-indigo-300">{{ options.length }}</span>
+          <span class="text-indigo-400">{{ options.length }}</span>
         </FlexHorizontal>
         <div>
           <input

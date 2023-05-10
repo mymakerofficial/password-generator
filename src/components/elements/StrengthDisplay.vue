@@ -2,7 +2,7 @@
   <GenericCard>
     <FlexVertical>
       <FlexHorizontal between>
-        <h3 class="text-gray-500 font-bold uppercase">Strength</h3>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Strength</h3>
         <div class="flex gap-1">
           <span
               v-for="i in 4"
@@ -13,9 +13,9 @@
         </div>
       </FlexHorizontal>
       <FlexHorizontal between>
-        <h3 class="text-gray-500 font-bold uppercase">Guessed in</h3>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Guessed in</h3>
         <div>
-          <span class="text-gray-100 font-medium">{{ crackTimeDisplay }}</span>
+          <span class="font-medium">{{ crackTimeDisplay }}</span>
         </div>
       </FlexHorizontal>
     </FlexVertical>

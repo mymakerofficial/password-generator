@@ -1,8 +1,8 @@
 <template>
   <GenericCard>
     <FlexHorizontal>
-      <input class="text-2xl bg-transparent text-gray-100 w-full" type="text" v-model="passwordText" />
-      <button @click="copy(passwordText)" class="text-indigo-300">Copy!</button>
+      <input class="text-2xl bg-transparent w-full" type="text" v-model="passwordText" />
+      <button @click="copy(passwordText)" class="text-indigo-400">Copy!</button>
     </FlexHorizontal>
   </GenericCard>
 </template>

@@ -8,9 +8,9 @@
 
 <style scoped>
 section.card-outer {
-  @apply bg-gradient-to-b from-gray-500 to-gray-800 rounded-xl p-[0.1em]
+  @apply bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-500 dark:to-gray-800 rounded-xl p-[0.1em]
 }
 div.card-inner {
-  @apply bg-gray-800 rounded-xl p-6;
+  @apply bg-gray-100 dark:bg-gray-800 rounded-xl p-6;
 }
 </style>
