@@ -7,7 +7,7 @@ export interface PasswordOptions {
 }
 
 export const defaultPasswordOptions: PasswordOptions = {
-  length: 10,
+  length: 16,
   includeUppercase: true,
   includeLowercase: true,
   includeNumbers: true,
