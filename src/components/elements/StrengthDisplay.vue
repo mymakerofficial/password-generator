@@ -34,8 +34,8 @@ const props = defineProps<{
   passwordText: string;
 }>();
 
-const crackTimeDisplay = ref<string>();
-const score = ref<number>();
+const crackTimeDisplay = ref<string>("");
+const score = ref<number>(0);
 
 watch(() => props.passwordText, (newVal) => {
   const res = zxcvbn(newVal);
