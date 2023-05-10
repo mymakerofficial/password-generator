@@ -32,20 +32,26 @@ const options = ref<PasswordOptions>({
 
 function generate() {
   const res = password(get(options));
-  ignoreUpdates(() => {
+  passwordTextIgnoreUpdates(() => {
     set(passwordText, res);
   });
 }
 
-const { ignoreUpdates } = watchIgnorable(passwordText, (newVal) => {
+const { ignoreUpdates: passwordTextIgnoreUpdates } = watchIgnorable(passwordText, (newVal) => {
   const res = passwordToOptions(newVal);
 
-  if (res.length > 0) {
-    set(options, res);
-  } else {
-    set(options, defaultPasswordOptions);
-  }
+  optionsIgnoreUpdates(() => {
+    if (res.length > 0) {
+      set(options, res);
+    } else {
+      set(options, defaultPasswordOptions);
+    }
+  })
 });
+
+const { ignoreUpdates: optionsIgnoreUpdates } = watchIgnorable(options, () => {
+  generate();
+}, {deep: true});
 
 onMounted(() => {
   generate();
