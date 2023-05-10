@@ -4,11 +4,10 @@
       <FlexHorizontal between>
         <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Strength</h3>
         <div class="flex gap-1">
-          <span
-              v-for="i in 4"
-              :key="i"
-              class="block h-8 w-2"
-              :class="{ 'bg-gray-900': score < i, 'bg-indigo-400': score >= i }"
+          <StrengthBar
+            v-for="i in 4"
+            :key="i"
+            :active="score >= i"
           />
         </div>
       </FlexHorizontal>
@@ -29,6 +28,7 @@ import {set} from "@vueuse/core";
 import GenericCard from "@/components/generic/GenericCard.vue";
 import FlexVertical from "@/components/generic/FlexVertical.vue";
 import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
+import StrengthBar from "@/components/goodies/StrengthBar.vue";
 
 const props = defineProps<{
   passwordText: string;
