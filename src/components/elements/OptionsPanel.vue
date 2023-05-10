@@ -36,7 +36,7 @@
         </FlexHorizontal>
       </FlexVertical>
       <div>
-        <LargePrimaryButton @click="generate">Generate</LargePrimaryButton>
+        <LargePrimaryButton @click="generate"><IconMagic class="h-5"/>Generate</LargePrimaryButton>
       </div>
     </FlexVertical>
   </GenericCard>
@@ -49,6 +49,7 @@ import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
 import LargePrimaryButton from "@/components/form/LargePrimaryButton.vue";
 import type {GeneratePasswordOptions} from "@/lib/generatePassword";
 import {useVModel} from "@vueuse/core";
+import IconMagic from "@/components/icons/IconMagic.vue";
 
 const props = defineProps<{
   options: GeneratePasswordOptions;
