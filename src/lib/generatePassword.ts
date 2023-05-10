@@ -6,7 +6,7 @@ export interface GeneratePasswordOptions {
   includeSymbols: boolean;
 }
 
-const DEFAULT_OPTIONS: GeneratePasswordOptions = {
+export const defaultPasswordOptions: GeneratePasswordOptions = {
   length: 10,
   includeUppercase: true,
   includeLowercase: true,
@@ -16,7 +16,7 @@ const DEFAULT_OPTIONS: GeneratePasswordOptions = {
 
 export function generatePassword(options: Partial<GeneratePasswordOptions>): string {
   const mergedOptions: GeneratePasswordOptions = {
-    ...DEFAULT_OPTIONS,
+    ...defaultPasswordOptions,
     ...options
   }
 
