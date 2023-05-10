@@ -19,21 +19,33 @@ import FlexVertical from "@/components/generic/FlexVertical.vue";
 import StrengthDisplay from "@/components/elements/StrengthDisplay.vue";
 import OptionsPanel from "@/components/elements/OptionsPanel.vue";
 import PasswordDisplay from "@/components/elements/PasswordDisplay.vue";
-import {onMounted, reactive, ref} from "vue";
-import {set} from "@vueuse/core";
-import {defaultPasswordOptions, generatePassword} from "@/lib/generatePassword";
-import type {GeneratePasswordOptions} from "@/lib/generatePassword";
+import {onMounted, ref} from "vue";
+import {get, set, watchIgnorable} from "@vueuse/core";
+import {defaultPasswordOptions, password, passwordToOptions} from "@/lib/password";
+import type {PasswordOptions} from "@/lib/password";
 
 const passwordText = ref("");
 
-const options = reactive<GeneratePasswordOptions>({
+const options = ref<PasswordOptions>({
   ...defaultPasswordOptions
 })
 
 function generate() {
-  const res = generatePassword(options);
-  set(passwordText, res)
+  const res = password(get(options));
+  ignoreUpdates(() => {
+    set(passwordText, res);
+  });
 }
+
+const { ignoreUpdates } = watchIgnorable(passwordText, (newVal) => {
+  const res = passwordToOptions(newVal);
+
+  if (res.length > 0) {
+    set(options, res);
+  } else {
+    set(options, defaultPasswordOptions);
+  }
+});
 
 onMounted(() => {
   generate();

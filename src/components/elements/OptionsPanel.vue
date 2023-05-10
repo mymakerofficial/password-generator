@@ -47,12 +47,12 @@ import GenericCard from "@/components/generic/GenericCard.vue";
 import FlexVertical from "@/components/generic/FlexVertical.vue";
 import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
 import LargePrimaryButton from "@/components/form/LargePrimaryButton.vue";
-import type {GeneratePasswordOptions} from "@/lib/generatePassword";
+import type {PasswordOptions} from "@/lib/password";
 import {useVModel} from "@vueuse/core";
 import IconMagic from "@/components/icons/IconMagic.vue";
 
 const props = defineProps<{
-  options: GeneratePasswordOptions;
+  options: PasswordOptions;
 }>();
 
 const emit = defineEmits(["update:options", "generate"]);
