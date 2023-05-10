@@ -3,7 +3,7 @@
     <Container>
       <FlexVertical>
         <FlexHorizontal between class="px-6">
-          <h1 class="text-md text-gray-300 font-medium">Simple Password</h1>
+          <h1 class="text-md text-gray-500 dark:text-gray-300 font-medium">Simple Password</h1>
           <SmallSecondaryButton href="https://github.com/mymakerofficial/password-generator" target="_blank"><IconGithub class="h-5"/>Star on GitHub</SmallSecondaryButton>
         </FlexHorizontal>
         <PasswordDisplay v-model:password-text="passwordText" />
