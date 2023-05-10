@@ -1,10 +1,13 @@
 <template>
   <main>
     <Container class="flex flex-col gap-6 justify-center h-screen">
+      <div class="flex justify-center">
+        <h1 class="text-lg text-gray-300 font-medium">Simple Password Generator</h1>
+      </div>
       <Card>
         <div class="flex flex-row gap-3">
           <input class="text-2xl bg-transparent text-gray-100 w-full" type="text" v-model="passwordText" />
-          <button @click="copy(passwordText)" class="text-green-300">Copy!</button>
+          <button @click="copy(passwordText)" class="text-indigo-300">Copy!</button>
         </div>
       </Card>
       <Card class="flex flex-col gap-6">
@@ -12,7 +15,7 @@
           <div class="flex flex-col gap-3">
             <div class="flex flex-row gap-3 justify-between items-center">
               <label for="length">Character Length</label>
-              <span class="text-green-300">{{ options.length }}</span>
+              <span class="text-indigo-300">{{ options.length }}</span>
             </div>
             <div>
               <input
@@ -41,13 +44,13 @@
             <input type="checkbox" id="includeSymbols" v-model="options.includeSymbols" />
             <label for="includeSymbols">Include Symbols</label>
           </div>
+          <div>
+            <LargePrimaryButton @click="generate">Generate</LargePrimaryButton>
+          </div>
         </div>
-        <div>
-          <StrengthDisplay :password-text="passwordText" />
-        </div>
-        <div>
-          <LargePrimaryButton @click="generate">Generate</LargePrimaryButton>
-        </div>
+      </Card>
+      <Card>
+        <StrengthDisplay :password-text="passwordText" />
       </Card>
     </Container>
   </main>
