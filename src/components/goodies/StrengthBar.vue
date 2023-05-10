@@ -18,7 +18,7 @@ defineProps<{
 
 <style scoped>
 span.bar-outer {
-  @apply block h-8 w-2 p-[0.1em] rounded-full;
+  @apply block h-8 w-2 p-[1px] rounded-full;
 }
 
 span.bar-outer[data-active="false"] {

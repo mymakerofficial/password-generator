@@ -12,7 +12,7 @@ import {RouterLink} from "vue-router";
 
 <style scoped>
 .secondary-button-outer {
-  @apply h-10 bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-500 dark:to-gray-800 p-[0.1em] rounded-full;
+  @apply h-10 bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-500 dark:to-gray-700 p-[1px] rounded-full;
 }
 
 span.secondary-button-inner {
