@@ -17,19 +17,19 @@
       </FlexVertical>
       <FlexVertical slim>
         <FlexHorizontal slim>
-          <input type="checkbox" id="includeUppercase" v-model="options.includeUppercase" />
+          <CheckboxInput type="checkbox" id="includeUppercase" v-model="options.includeUppercase" />
           <label for="includeUppercase">Include Uppercase</label>
         </FlexHorizontal>
         <FlexHorizontal slim>
-          <input type="checkbox" id="includeLowercase" v-model="options.includeLowercase" />
+          <CheckboxInput type="checkbox" id="includeLowercase" v-model="options.includeLowercase" />
           <label for="includeLowercase">Include Lowercase</label>
         </FlexHorizontal>
         <FlexHorizontal slim>
-          <input type="checkbox" id="includeNumbers" v-model="options.includeNumbers" />
+          <CheckboxInput type="checkbox" id="includeNumbers" v-model="options.includeNumbers" />
           <label for="includeNumbers">Include Numbers</label>
         </FlexHorizontal>
         <FlexHorizontal slim>
-          <input type="checkbox" id="includeSymbols" v-model="options.includeSymbols" />
+          <CheckboxInput type="checkbox" id="includeSymbols" v-model="options.includeSymbols" />
           <label for="includeSymbols">Include Symbols</label>
         </FlexHorizontal>
       </FlexVertical>
@@ -49,6 +49,7 @@ import type {PasswordOptions} from "@/lib/password";
 import {useVModel} from "@vueuse/core";
 import IconMagic from "@/components/icons/IconMagic.vue";
 import RangeInput from "@/components/form/RangeInput.vue";
+import CheckboxInput from "@/components/form/CheckboxInput.vue";
 
 const props = defineProps<{
   options: PasswordOptions;
