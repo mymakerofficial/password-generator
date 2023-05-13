@@ -42,6 +42,10 @@ export function password(options: Partial<PasswordOptions>): string {
     chars += symbols;
   }
 
+  if (chars.length === 0) {
+    return '';
+  }
+
   let generatedPassword = '';
 
   for (let i = 0; i < mergedOptions.length; i++) {
