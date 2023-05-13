@@ -1,7 +1,11 @@
 <template>
   <GenericCard>
     <FlexVertical>
-      <FlexVertical slim class="text-rose-500" v-if="!expand && warning">
+      <FlexHorizontal between v-if="refreshRequired">
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Strength</h3>
+        <SmallSecondaryButton @click="calcStrength">Calculate</SmallSecondaryButton>
+      </FlexHorizontal>
+      <FlexVertical slim class="text-rose-500" v-else-if="!expand && warning">
         <h3 class="font-bold uppercase flex items-center gap-3"><IconWarning class="h-6 fill-current inline" /> Warning</h3>
         <p class="text-sm font-medium">{{ warning }}</p>
       </FlexVertical>
@@ -92,6 +96,8 @@ const props = defineProps<{
 
 const expand = ref(false);
 
+const refreshRequired = ref(false);
+
 const crackTimeOfflineDisplay = ref<string>("");
 const crackTimeOnlineDisplay = ref<string>("");
 const score = ref<number>(0);
@@ -102,7 +108,17 @@ const sequence = ref<any[]>([]);
 const calcTime = ref<number>(0);
 
 watch(() => props.passwordText, (newVal) => {
-  const res = zxcvbn(newVal);
+  if(newVal.length < 42) {
+    calcStrength();
+  } else {
+    set(refreshRequired, true)
+  }
+});
+
+function calcStrength() {
+  set(refreshRequired, false)
+
+  const res = zxcvbn(props.passwordText);
 
   set(crackTimeOfflineDisplay, res.crack_times_display.offline_fast_hashing_1e10_per_second);
   set(crackTimeOnlineDisplay, res.crack_times_display.online_no_throttling_10_per_second)
@@ -112,5 +128,5 @@ watch(() => props.passwordText, (newVal) => {
   set(warning, res.feedback.warning);
   set(sequence, res.sequence)
   set(calcTime, res.calc_time)
-});
+}
 </script>

@@ -10,7 +10,7 @@
           <RangeInput
             id="length"
             :min="3"
-            :max="64"
+            :max="128"
             v-model.number="options.length"
           />
         </div>
