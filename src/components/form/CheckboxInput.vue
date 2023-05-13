@@ -21,7 +21,7 @@ const value = useVModel(props, "modelValue", emit);
 
 <style scoped>
 input[type="checkbox"] {
-  @apply appearance-none bg-transparent border border-gray-400 rounded-md w-5 h-5 grid place-content-center transition-colors duration-200;
+  @apply appearance-none bg-transparent border border-gray-300 dark:border-gray-500 rounded-md w-4 aspect-square grid place-content-center transition-colors duration-200;
 }
 
 input[type="checkbox"]:checked {
@@ -31,7 +31,7 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]::before {
   content: "";
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  @apply h-2.5 aspect-square bg-gray-900 dark:bg-gray-100 rounded-sm scale-0 transition-transform transition-colors duration-200;
+  @apply h-2 aspect-square bg-gray-900 dark:bg-gray-100 rounded-sm scale-0 transition-transform transition-colors duration-200;
 }
 
 input[type="checkbox"]:checked::before {
