@@ -7,13 +7,11 @@
           <span class="text-indigo-400">{{ options.length }}</span>
         </FlexHorizontal>
         <div>
-          <input
-              id="length"
-              type="range"
-              min="3"
-              max="64"
-              v-model="options.length"
-              class="w-full"
+          <RangeInput
+            id="length"
+            :min="3"
+            :max="64"
+            v-model.number="options.length"
           />
         </div>
       </FlexVertical>
@@ -50,6 +48,7 @@ import LargePrimaryButton from "@/components/form/LargePrimaryButton.vue";
 import type {PasswordOptions} from "@/lib/password";
 import {useVModel} from "@vueuse/core";
 import IconMagic from "@/components/icons/IconMagic.vue";
+import RangeInput from "@/components/form/RangeInput.vue";
 
 const props = defineProps<{
   options: PasswordOptions;
