@@ -1,7 +1,7 @@
 <template>
   <GenericCard>
     <FlexVertical>
-      <FlexVertical slim class="text-gray-400 dark:text-rose-500" v-if="!expand && warning">
+      <FlexVertical slim class="text-rose-500" v-if="!expand && warning">
         <h3 class="font-bold uppercase flex items-center gap-3"><IconWarning class="h-6 fill-current inline" /> Warning</h3>
         <p class="text-sm font-medium">{{ warning }}</p>
       </FlexVertical>
