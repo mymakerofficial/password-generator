@@ -15,55 +15,57 @@
           />
         </div>
       </FlexHorizontal>
-      <FlexVertical v-show="expand">
+    </FlexVertical>
+  </GenericCard>
+  <GenericCard v-show="expand">
+    <FlexVertical>
+      <FlexVertical slim>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Tips</h3>
         <FlexVertical slim>
-          <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Tips</h3>
-          <FlexVertical slim>
-            <span v-for="(item, index) in suggestions" :key="index" class="font-medium">{{ item }}</span>
-          </FlexVertical>
+          <span v-for="(item, index) in suggestions" :key="index" class="font-medium">{{ item }}</span>
         </FlexVertical>
-        <FlexVertical slim>
-          <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Warning</h3>
-          <div>
-            <span class="font-medium">{{ warning || "-" }}</span>
-          </div>
-        </FlexVertical>
-        <FlexVertical slim>
-          <FlexHorizontal slim class="text-gray-400 dark:text-gray-500">
-            <h3 class="font-bold uppercase">Crack time</h3>
-            <small>(offline)</small>
-          </FlexHorizontal>
-          <div>
-            <span class="font-medium">{{ crackTimeOfflineDisplay }}</span>
-          </div>
-        </FlexVertical>
-        <FlexVertical slim>
-          <FlexHorizontal slim class="text-gray-400 dark:text-gray-500">
-            <h3 class="font-bold uppercase">Crack time</h3>
-            <small>(online)</small>
-          </FlexHorizontal>
-          <div>
-            <span class="font-medium">{{ crackTimeOnlineDisplay }}</span>
-          </div>
-        </FlexVertical>
-        <FlexVertical slim>
-          <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Guesses</h3>
-          <div>
-            <span class="font-medium">{{ guesses }}</span>
-          </div>
-        </FlexVertical>
-        <FlexVertical slim>
-          <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Sequence</h3>
-          <CodeBlock>
-            <FlexVertical slim>
-              <span v-for="(item, index) in sequence" :key="index" class="text-xs font-medium">{{index + 1 }}. {{ item.pattern }} "{{ item.token }}" ({{ item.guesses }} guesses)</span>
-            </FlexVertical>
-          </CodeBlock>
-        </FlexVertical>
+      </FlexVertical>
+      <FlexVertical slim>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Warning</h3>
         <div>
-          <small class="text-gray-400 dark:text-gray-500">strength estimation calculated in {{ calcTime }} ms using zxcvbn</small>
+          <span class="font-medium">{{ warning || "-" }}</span>
         </div>
       </FlexVertical>
+      <FlexVertical slim>
+        <FlexHorizontal slim class="text-gray-400 dark:text-gray-500">
+          <h3 class="font-bold uppercase">Crack time</h3>
+          <small>(offline)</small>
+        </FlexHorizontal>
+        <div>
+          <span class="font-medium">{{ crackTimeOfflineDisplay }}</span>
+        </div>
+      </FlexVertical>
+      <FlexVertical slim>
+        <FlexHorizontal slim class="text-gray-400 dark:text-gray-500">
+          <h3 class="font-bold uppercase">Crack time</h3>
+          <small>(online)</small>
+        </FlexHorizontal>
+        <div>
+          <span class="font-medium">{{ crackTimeOnlineDisplay }}</span>
+        </div>
+      </FlexVertical>
+      <FlexVertical slim>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Guesses</h3>
+        <div>
+          <span class="font-medium">{{ guesses }}</span>
+        </div>
+      </FlexVertical>
+      <FlexVertical slim>
+        <h3 class="text-gray-400 dark:text-gray-500 font-bold uppercase">Sequence</h3>
+        <CodeBlock>
+          <FlexVertical slim>
+            <span v-for="(item, index) in sequence" :key="index" class="text-xs font-medium">{{index + 1 }}. {{ item.pattern }} "{{ item.token }}" ({{ item.guesses }} guesses)</span>
+          </FlexVertical>
+        </CodeBlock>
+      </FlexVertical>
+      <div>
+        <small class="text-gray-400 dark:text-gray-500">strength estimation calculated in {{ calcTime }} ms using zxcvbn</small>
+      </div>
     </FlexVertical>
   </GenericCard>
   <div class="flex justify-center px-6">
