@@ -2,7 +2,7 @@
   <FlexVertical>
     <FlexVertical slim>
       <FlexHorizontal between>
-        <label for="length">Character Length</label>
+        <label for="length">Word Count</label>
         <span class="text-indigo-400">{{ options.length }}</span>
       </FlexHorizontal>
       <div>
