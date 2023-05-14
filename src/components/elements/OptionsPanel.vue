@@ -1,38 +1,23 @@
 <template>
   <GenericCard>
+    <template #header>
+      <RadioGroup
+          v-model="type"
+          :options="[
+          { label: 'Password', key: PasswordType.Password },
+          { label: 'Passphrase', key: PasswordType.Passphrase },
+        ]"
+      />
+    </template>
     <FlexVertical>
-      <FlexVertical slim>
-        <FlexHorizontal between>
-          <label for="length">Character Length</label>
-          <span class="text-indigo-400">{{ options.length }}</span>
-        </FlexHorizontal>
-        <div>
-          <RangeInput
-            id="length"
-            :min="3"
-            :max="128"
-            v-model.number="options.length"
-          />
-        </div>
-      </FlexVertical>
-      <FlexVertical slim>
-        <FlexHorizontal slim>
-          <CheckboxInput type="checkbox" id="includeUppercase" v-model="options.includeUppercase" />
-          <label for="includeUppercase">Include Uppercase</label>
-        </FlexHorizontal>
-        <FlexHorizontal slim>
-          <CheckboxInput type="checkbox" id="includeLowercase" v-model="options.includeLowercase" />
-          <label for="includeLowercase">Include Lowercase</label>
-        </FlexHorizontal>
-        <FlexHorizontal slim>
-          <CheckboxInput type="checkbox" id="includeNumbers" v-model="options.includeNumbers" />
-          <label for="includeNumbers">Include Numbers</label>
-        </FlexHorizontal>
-        <FlexHorizontal slim>
-          <CheckboxInput type="checkbox" id="includeSymbols" v-model="options.includeSymbols" />
-          <label for="includeSymbols">Include Symbols</label>
-        </FlexHorizontal>
-      </FlexVertical>
+      <PasswordOptionsForm
+        v-if="type === PasswordType.Password"
+        v-model="passwordOptions"
+      />
+      <PassphraseOptionsForm
+        v-else-if="type === PasswordType.Passphrase"
+        v-model="passphraseOptions"
+      />
       <div>
         <LargePrimaryButton @click="generate"><IconMagic class="h-5"/>Generate</LargePrimaryButton>
       </div>
@@ -43,21 +28,27 @@
 <script setup lang="ts">
 import GenericCard from "@/components/generic/GenericCard.vue";
 import FlexVertical from "@/components/generic/FlexVertical.vue";
-import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
 import LargePrimaryButton from "@/components/form/LargePrimaryButton.vue";
-import type {PasswordOptions} from "@/lib/password";
+import type {PassphraseOptions, PasswordOptions} from "@/lib/generatePassword";
 import {useVModel} from "@vueuse/core";
 import IconMagic from "@/components/icons/IconMagic.vue";
-import RangeInput from "@/components/form/RangeInput.vue";
-import CheckboxInput from "@/components/form/CheckboxInput.vue";
+import RadioGroup from "@/components/form/RadioGroup.vue";
+import {PasswordType} from "@/lib/generatePassword";
+import PasswordOptionsForm from "@/components/elements/PasswordOptionsForm.vue";
+import PassphraseOptionsForm from "@/components/elements/PassphraseOptionsForm.vue";
 
 const props = defineProps<{
-  options: PasswordOptions;
+  type: PasswordType;
+  passwordOptions: PasswordOptions;
+  passphraseOptions: PassphraseOptions;
 }>();
 
-const emit = defineEmits(["update:options", "generate"]);
+const emit = defineEmits(["update:type", "update:passwordOptions", "update:passphraseOptions", "generate"]);
 
-const options = useVModel(props, "options", emit);
+const type = useVModel(props, "type", emit);
+
+const passwordOptions = useVModel(props, "passwordOptions", emit);
+const passphraseOptions = useVModel(props, "passphraseOptions", emit);
 
 function generate() {
   emit("generate");
