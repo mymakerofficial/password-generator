@@ -6,6 +6,7 @@ export interface PasswordOptions {
   includeLowercase: boolean;
   includeNumbers: boolean;
   includeSymbols: boolean;
+  avoidAmbiguous: boolean;
 }
 
 export interface PassphraseOptions {
@@ -21,6 +22,7 @@ export const defaultPasswordOptions: PasswordOptions = {
   includeLowercase: true,
   includeNumbers: true,
   includeSymbols: true,
+  avoidAmbiguous: false,
 }
 
 export const defaultPassphraseOptions: PassphraseOptions = {
@@ -38,6 +40,7 @@ export enum PasswordType {
 const characters = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
 const symbols = '!@#$%^&*()_+=-';
+const ambiguous = 'il1Lo0O';
 
 export function generatePassword(options: Partial<PasswordOptions>): string {
   const mergedOptions: PasswordOptions = {
@@ -61,6 +64,10 @@ export function generatePassword(options: Partial<PasswordOptions>): string {
 
   if (mergedOptions.includeSymbols) {
     chars += symbols;
+  }
+
+  if (mergedOptions.avoidAmbiguous) {
+    chars = chars.split('').filter(char => !ambiguous.includes(char)).join('');
   }
 
   if (chars.length === 0) {
@@ -121,6 +128,7 @@ export function passwordToOptions(passwordText: string): PasswordOptions {
     includeLowercase: false,
     includeNumbers: false,
     includeSymbols: false,
+    avoidAmbiguous: false,
   }
 
   for (const char of passwordText) {

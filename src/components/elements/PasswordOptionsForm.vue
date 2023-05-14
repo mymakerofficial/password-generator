@@ -31,6 +31,10 @@
         <CheckboxInput type="checkbox" id="includeSymbols" v-model="options.includeSymbols" />
         <label for="includeSymbols">Include Symbols</label>
       </FlexHorizontal>
+      <FlexHorizontal slim>
+        <CheckboxInput type="checkbox" id="avoidAmbiguous" v-model="options.avoidAmbiguous" />
+        <label for="avoidAmbiguous">Avoid Ambiguous Characters</label>
+      </FlexHorizontal>
     </FlexVertical>
   </FlexVertical>
 </template>
