@@ -38,15 +38,15 @@ input[type="range"] {
 
 /* Input Thumb */
 input[type="range"]::-webkit-slider-thumb {
-  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500 shadow-md shadow-indigo-500/50;
+  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500;
 }
 
 input[type="range"]::-moz-range-thumb {
-  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500 shadow-md shadow-indigo-500/50;
+  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500;
 }
 
 input[type="range"]::-ms-thumb {
-  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500 shadow-md shadow-indigo-500/50;
+  @apply appearance-none h-4 aspect-square rounded-full bg-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500;
 }
 
 /* Input Track */
