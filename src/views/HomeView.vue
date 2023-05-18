@@ -27,7 +27,7 @@ import StrengthDisplay from "@/components/elements/StrengthDisplay.vue";
 import OptionsPanel from "@/components/elements/OptionsPanel.vue";
 import PasswordDisplay from "@/components/elements/PasswordDisplay.vue";
 import {onMounted, ref} from "vue";
-import {get, set, watchIgnorable} from "@vueuse/core";
+import {get, set, useStorage, watchIgnorable} from "@vueuse/core";
 import {
   defaultPassphraseOptions,
   defaultPasswordOptions,
@@ -42,14 +42,13 @@ import IconGithub from "@/components/icons/IconGithub.vue";
 const passwordText = ref("");
 
 const type = ref<PasswordType>(PasswordType.Password);
+const passwordOptions = ref<PasswordOptions>(defaultPasswordOptions);
+const passphraseOptions = ref<PassphraseOptions>(defaultPassphraseOptions);
 
-const passwordOptions = ref<PasswordOptions>({
-  ...defaultPasswordOptions
-})
-
-const passphraseOptions = ref<PassphraseOptions>({
-  ...defaultPassphraseOptions
-})
+// sync with local storage
+useStorage("passwordType", type)
+useStorage("passwordOptions", passwordOptions);
+useStorage("passphraseOptions", passphraseOptions);
 
 function generate() {
   let res = '';
