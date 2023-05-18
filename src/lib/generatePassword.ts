@@ -110,7 +110,7 @@ export function generatePassphrase(options: Partial<PassphraseOptions>) {
 
     if (mergedOptions.includeNumbers) {
       if (Math.random() > 0.5) {
-        const number = Math.floor(Math.random() * 100);
+        const number = Math.floor(Math.random() * 10);
         word += number;
       }
     }
