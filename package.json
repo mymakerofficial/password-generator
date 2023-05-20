@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.1.2",
+    "@vueuse/router": "^10.1.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "zxcvbn-typescript": "^5.0.1"

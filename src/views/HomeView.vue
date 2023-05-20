@@ -38,6 +38,7 @@ import {
 import type {PasswordOptions, PassphraseOptions} from "@/lib/generatePassword";
 import SmallSecondaryButton from "@/components/form/SmallSecondaryButton.vue";
 import IconGithub from "@/components/icons/IconGithub.vue";
+import {useRouteQuery} from "@vueuse/router";
 
 const passwordText = ref("");
 
@@ -49,6 +50,13 @@ const passphraseOptions = ref<PassphraseOptions>(defaultPassphraseOptions);
 useStorage("passwordType", type)
 useStorage("passwordOptions", passwordOptions);
 useStorage("passphraseOptions", passphraseOptions);
+
+const resetOptions = useRouteQuery('reset');
+
+if (resetOptions.value === 'true') {
+  set(passwordOptions, defaultPasswordOptions);
+  set(passphraseOptions, defaultPassphraseOptions);
+}
 
 function generate() {
   let res = '';
