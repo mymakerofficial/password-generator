@@ -53,7 +53,7 @@ useStorage("passphraseOptions", passphraseOptions);
 
 const resetOptions = useRouteQuery('reset');
 
-if (resetOptions.value === 'true') {
+if (get(resetOptions) === 'true') {
   set(passwordOptions, defaultPasswordOptions);
   set(passphraseOptions, defaultPassphraseOptions);
 }
