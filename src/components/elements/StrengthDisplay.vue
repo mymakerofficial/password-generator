@@ -115,7 +115,12 @@ watch(() => props.passwordText, (newVal) => {
   }
 });
 
-function calcStrength() {
+async function calcStrength() {
+  if (props.passwordText.length > 240) {
+    const confirm = window.confirm(`Alright buddy, you're trying to calculate the strength of a ${props.passwordText.length} character long password. This will probably break your browser and I can already tell you its secure enough. You sure you still want to do this?`)
+    if(!confirm) return;
+  }
+
   set(refreshRequired, false)
 
   const res = zxcvbn(props.passwordText);
