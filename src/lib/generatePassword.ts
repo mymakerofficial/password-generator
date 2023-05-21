@@ -48,6 +48,9 @@ export function generatePassword(options: Partial<PasswordOptions>): string {
     ...options
   }
 
+  // Limit length to 1000 characters
+  mergedOptions.length = Math.min(mergedOptions.length, 1000);
+
   let chars = '';
 
   if (mergedOptions.includeUppercase) {
@@ -99,6 +102,9 @@ export function generatePassphrase(options: Partial<PassphraseOptions>) {
     ...options
   }
 
+  // Limit length to 100 words
+  mergedOptions.length = Math.min(mergedOptions.length, 100);
+
   const words: string[] = [];
 
   for (let i = 0; i < mergedOptions.length; i++) {
@@ -143,7 +149,7 @@ export function passwordToOptions(passwordText: string): PasswordOptions {
     }
   }
 
-  options.length = passwordText.length;
+  options.length = Math.min(passwordText.length, 1000);
 
   return options;
 }
