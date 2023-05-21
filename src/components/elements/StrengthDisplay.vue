@@ -108,7 +108,7 @@ const sequence = ref<any[]>([]);
 const calcTime = ref<number>(0);
 
 watch(() => props.passwordText, (newVal) => {
-  if(newVal.length < 42) {
+  if(newVal.length <= 64) {
     calcStrength();
   } else {
     set(refreshRequired, true)
