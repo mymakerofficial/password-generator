@@ -26,7 +26,7 @@ import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
 import StrengthDisplay from "@/components/elements/StrengthDisplay.vue";
 import OptionsPanel from "@/components/elements/OptionsPanel.vue";
 import PasswordDisplay from "@/components/elements/PasswordDisplay.vue";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {get, set, useStorage, watchIgnorable} from "@vueuse/core";
 import {
   defaultPassphraseOptions,
@@ -47,9 +47,34 @@ const passwordOptions = ref<PasswordOptions>(defaultPasswordOptions);
 const passphraseOptions = ref<PassphraseOptions>(defaultPassphraseOptions);
 
 // sync with local storage
-useStorage("passwordType", type)
-useStorage("passwordOptions", passwordOptions);
-useStorage("passphraseOptions", passphraseOptions);
+// listen... i know there is an easier way to do this, but the easier way doesn't work with ignorable watchers
+
+// so we make refs that are gonna be synced with local storage
+const typeStorage = ref(get(type));
+const passwordOptionsStorage = ref(get(passwordOptions));
+const passphraseOptionsStorage = ref(get(passphraseOptions));
+
+// and then we sync them
+// use storage will use the values as defaults and merges them with the local storage value
+useStorage("passwordType", typeStorage);
+useStorage("passwordOptions", passwordOptionsStorage);
+useStorage("passphraseOptions", passphraseOptionsStorage);
+
+// set the normal refs to the local storage values
+set(type, get(typeStorage));
+set(passwordOptions, get(passwordOptionsStorage));
+set(passphraseOptions, get(passphraseOptionsStorage));
+
+// we watch for changes in the normal refs and set the local storage values. don't forget to do deep otherwise it won't work
+watch(type, () => {
+  set(typeStorage, get(type));
+});
+watch(passwordOptions, () => {
+  set(passwordOptionsStorage, get(passwordOptions));
+}, {deep: true});
+watch(passphraseOptions, () => {
+  set(passphraseOptionsStorage, get(passphraseOptions));
+}, {deep: true});
 
 const resetOptions = useRouteQuery('reset');
 
