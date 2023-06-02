@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import TextInput from "@/components/form/TextInput.vue";
-import {defineProps, watch} from "vue";
+import {watch} from "vue";
 import {get, set, useVModel} from "@vueuse/core";
 
 const props = withDefaults(

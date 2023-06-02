@@ -3,7 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import {useVModel} from "@vueuse/core";
 import TextInput from "@/components/form/TextInput.vue";
 
