@@ -3,11 +3,10 @@
     <FlexVertical slim>
       <FlexHorizontal between>
         <label for="length">Character Length</label>
-        <span class="text-indigo-400">{{ options.length }}</span>
+        <SmallNumberInput id="length" v-model="options.length" :hard-min="1" :min="3" :max="128" :hard-max="1000" class="text-right w-auto" />
       </FlexHorizontal>
       <div>
         <RangeInput
-          id="length"
           :min="3"
           :max="128"
           v-model.number="options.length"
@@ -46,6 +45,7 @@ import RangeInput from "@/components/form/RangeInput.vue";
 import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import type {PasswordOptions} from "@/lib/generatePassword";
 import {useVModel} from "@vueuse/core";
+import SmallNumberInput from "@/components/form/SmallNumberInput.vue";
 
 const props = defineProps<{
   modelValue: PasswordOptions;

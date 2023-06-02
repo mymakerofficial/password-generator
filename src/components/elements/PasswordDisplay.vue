@@ -1,7 +1,7 @@
 <template>
   <GenericCard>
     <FlexHorizontal>
-      <input class="text-2xl bg-transparent w-full" type="text" v-model="passwordText" />
+      <TextInput v-model="passwordText" class="text-2xl w-full" />
       <button @click="copy(passwordText)" class="text-indigo-400"><IconCopy class="h-5" /></button>
     </FlexHorizontal>
   </GenericCard>
@@ -12,6 +12,7 @@ import GenericCard from "@/components/generic/GenericCard.vue";
 import FlexHorizontal from "@/components/generic/FlexHorizontal.vue";
 import {useClipboard, useVModel} from "@vueuse/core";
 import IconCopy from "@/components/icons/IconCopy.vue";
+import TextInput from "@/components/form/TextInput.vue";
 
 const props = defineProps<{
   passwordText: string;
