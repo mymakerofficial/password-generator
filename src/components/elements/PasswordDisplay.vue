@@ -2,7 +2,7 @@
   <GenericCard>
     <FlexHorizontal>
       <TextInput v-model="passwordText" class="text-2xl w-full" />
-      <button @click="copy(passwordText)" class="text-indigo-400"><IconCopy class="h-5" /></button>
+      <button @click="copy(passwordText)" class="text-indigo-400 rounded-md"><IconCopy class="h-5" /></button>
     </FlexHorizontal>
   </GenericCard>
 </template>

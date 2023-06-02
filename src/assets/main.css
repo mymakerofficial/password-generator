@@ -17,6 +17,10 @@ body {
     @apply text-gray-900 bg-indigo-200 dark:text-gray-50 dark:bg-indigo-300;
 }
 
+a:focus-visible, button:focus-visible, input[type=checkbox]:focus-visible, input[type=range]:focus-visible {
+    @apply outline-none ring-2 ring-gray-100/70;
+}
+
 svg {
     @apply fill-gray-900 dark:fill-gray-100;
 }
